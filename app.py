@@ -58,11 +58,12 @@ def secret_message():
     """
 
 @app.route('/message_results', methods=['POST'])
-def sort_letters(secret_message):
+def message_results():
     """A helper method to sort the characters of a string in alphabetical order
     and return the new string."""
-    return ''.join(sorted(list(secret_message)))    
-    print (f("Here is your secret message! <br/>{{sort_letters}}"))
+    secret_message = request.form.get("message")
+    secret_message_return = sorted(secret_message)
+    return f"Here is your secret message: {secret_message_return}"
 
 @app.route('/calculator')
 def calculator():
